@@ -33,9 +33,10 @@ async function startCall() {
     //     };
 
     //     socket.emit('join-room', roomId);
-    // } catch (error) {
-    //     console.error('Error starting call:', error);
-    // }
+    } 
+    catch (error) {
+        console.error('Error starting call:', error);
+    }
 }
 
 function endCall() {
