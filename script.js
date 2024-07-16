@@ -1,41 +1,41 @@
-let localStream;
-let peerConnection;
-let socket;
-let roomId = 'default-room';
+// let localStream;
+// let peerConnection;
+// let socket;
+// let roomId = 'default-room';
 
 const configuration = {
     iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
 };
 
-socket = io();
+// socket = io();
 
 async function startCall() {
     try {
         localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
         document.getElementById('localVideo').srcObject = localStream;
 
-        peerConnection = new RTCPeerConnection(configuration);
+    //     peerConnection = new RTCPeerConnection(configuration);
 
-        localStream.getTracks().forEach(track => {
-            peerConnection.addTrack(track, localStream);
-        });
+    //     localStream.getTracks().forEach(track => {
+    //         peerConnection.addTrack(track, localStream);
+    //     });
 
-        peerConnection.ontrack = event => {
-            if (event.streams && event.streams[0]) {
-                document.getElementById('remoteVideo').srcObject = event.streams[0];
-            }
-        };
+    //     peerConnection.ontrack = event => {
+    //         if (event.streams && event.streams[0]) {
+    //             document.getElementById('remoteVideo').srcObject = event.streams[0];
+    //         }
+    //     };
 
-        peerConnection.onicecandidate = event => {
-            if (event.candidate) {
-                socket.emit('ice-candidate', event.candidate, roomId);
-            }
-        };
+    //     peerConnection.onicecandidate = event => {
+    //         if (event.candidate) {
+    //             socket.emit('ice-candidate', event.candidate, roomId);
+    //         }
+    //     };
 
-        socket.emit('join-room', roomId);
-    } catch (error) {
-        console.error('Error starting call:', error);
-    }
+    //     socket.emit('join-room', roomId);
+    // } catch (error) {
+    //     console.error('Error starting call:', error);
+    // }
 }
 
 function endCall() {
