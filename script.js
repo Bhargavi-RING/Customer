@@ -39,40 +39,40 @@ async function startCall() {
 }
 
 function endCall() {
-    if (peerConnection) {
-        peerConnection.close();
-    }
-    if (localStream) {
-        localStream.getTracks().forEach(track => track.stop());
-    }
+    // if (peerConnection) {
+    //     peerConnection.close();
+    // }
+    // if (localStream) {
+    //     localStream.getTracks().forEach(track => track.stop());
+    // }
     document.getElementById('localVideo').srcObject = null;
     document.getElementById('remoteVideo').srcObject = null;
 }
 
-socket.on('user-connected', async () => {
-    const offer = await peerConnection.createOffer();
-    await peerConnection.setLocalDescription(offer);
-    socket.emit('offer', offer, roomId);
-});
+// socket.on('user-connected', async () => {
+//     const offer = await peerConnection.createOffer();
+//     await peerConnection.setLocalDescription(offer);
+//     socket.emit('offer', offer, roomId);
+// });
 
-socket.on('offer', async (offer) => {
-    await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
-    const answer = await peerConnection.createAnswer();
-    await peerConnection.setLocalDescription(answer);
-    socket.emit('answer', answer, roomId);
-});
+// socket.on('offer', async (offer) => {
+//     await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
+//     const answer = await peerConnection.createAnswer();
+//     await peerConnection.setLocalDescription(answer);
+//     socket.emit('answer', answer, roomId);
+// });
 
-socket.on('answer', async (answer) => {
-    await peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
-});
+// socket.on('answer', async (answer) => {
+//     await peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
+// });
 
-socket.on('ice-candidate', async (candidate) => {
-    try {
-        await peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
-    } catch (error) {
-        console.error('Error adding ICE candidate:', error);
-    }
-});
+// socket.on('ice-candidate', async (candidate) => {
+//     try {
+//         await peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
+//     } catch (error) {
+//         console.error('Error adding ICE candidate:', error);
+//     }
+// });
 
 document.getElementById('startCall').addEventListener('click', startCall);
 document.getElementById('endCall').addEventListener('click', endCall);
