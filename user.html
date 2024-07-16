@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Interface</title>
+    <link rel="stylesheet" href="style.css">
+<body>
+    <div id="app">
+    <h1>User Interface</h1>
+    <div id="videos">
+        <div class="video-container">
+            <video id="localVideo" autoplay muted></video>
+        </div>
+        <div class="video-container">
+            <video id="remoteVideo" autoplay></video>
+        </div>
+    </div>
+    <div id="controls">
+        <button id="startCall">Start Call</button>
+        <button id="endCall">End Call</button>
+    </div>
+</div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="user.js"></script>
+</body>
+</html>
