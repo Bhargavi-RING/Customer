@@ -7,7 +7,7 @@ const configuration = {
     iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
 };
 
-socket = io('https://vcip-poc.test.paywithring.com:3000');
+socket = io('https://vcip-poc.test.paywithring.com');
 
 async function startCall() {
     try {
