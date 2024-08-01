@@ -8,7 +8,7 @@ const configuration = {
     { urls: 'stun:stun.l.google.com:19302' },
                 
     {
-        urls: 'turn:vcip-poc.test.paywithring.com',
+        urls: 'turn:vcip-poc.test.paywithring.com:80',
         username: 'VcipPOC',
         credential: 'TrY123'
     }
